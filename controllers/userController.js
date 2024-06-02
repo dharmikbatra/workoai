@@ -47,7 +47,7 @@ exports.updateUser = catchAsync(async (req,res,next) => {
     if(name){obj.name = name}
     if(email){obj.email = email}
     if(zipCode){obj.zipCode = zipCode}
-    const user = await User.findByIdAndUpdate(req.params.userId, obj)
+    const user = await User.findByIdAndUpdate(req.params.userId, obj, {new: true})
     if (user){
         res.status(200).json({
             status:'success',
